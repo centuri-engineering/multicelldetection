@@ -1,4 +1,4 @@
-# AFM image processing and analysis
+# Confocal image processing and analysis
 Python scripts for AFM image processing and analysis
 
 # Applicant: Ayush Yadav
