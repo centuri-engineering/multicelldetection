@@ -1,0 +1,26 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Pycharm and VSCode
+.idea/
+.vscode/
+venv/
+env/
+.env/
+
+# IPython Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# OS
+.DS_Store
+
+# Some custom folders
+outputs/
