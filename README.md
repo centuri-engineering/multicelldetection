@@ -1,7 +1,7 @@
 # Confocal image processing and analysis
-Python scripts for AFM image processing and analysis
+Python scripts for confocal image processing and analysis
 
-# Applicant: Ayush Yadav
+----------------------------------------
 
 # Institute: Biology of Ciliated Epithelia (IBDM)
 
