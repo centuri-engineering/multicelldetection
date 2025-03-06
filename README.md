@@ -24,11 +24,16 @@ We would be working with fluorescence images (confocal microscopy) of different 
     conda create -n multicelldetection_env python=3.11
     conda activate multicelldetection_env
 
-Install PyTorch with GPU 
+Install PyTorch with GPU (for using cellpose)
 
     pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+
+Install Cellpose
+
+    python -m pip install cellpose[gui]
     
 Install the codes
+
     pip install git+https://github.com/ledvic/multicelldetection.git
 
 ## Updating
