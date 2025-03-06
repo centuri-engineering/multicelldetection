@@ -31,7 +31,7 @@ if __name__ == "__main__":
 	output_folder = os.path.join('outputs', os.path.basename(image_folder)) # output folder
 	os.makedirs(output_folder, exist_ok=True) # Create the directory if it doesn't exist
 	
-	classifier_filepath = os.path.join(output_folder, 'RF_classifier_test_7.pkl') 
+	classifier_filepath = os.path.join(output_folder, 'RF_classifier_test_1.pkl') 
 
 	_, _= train(train_image_rgb_1, train_positions, train_image_rgb_1_mask, train_image_rgb_2, classifier_filepath)
 

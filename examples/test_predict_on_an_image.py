@@ -27,7 +27,7 @@ if __name__ == "__main__":
 
 	# step 2 - Load a classifier
 	classifier_folder = 'outputs//test_1_20x'
-	classifier_filepath = os.path.join(classifier_folder, 'RF_classifier_test_7.pkl') 
+	classifier_filepath = os.path.join(classifier_folder, 'RF_classifier_test_8.pkl') 
 	
 	clf, scaler = load_a_classifier(classifier_filepath)
 
