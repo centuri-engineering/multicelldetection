@@ -6,9 +6,9 @@ here = pathlib.Path(__file__).parent.resolve()
 long_description = (here / 'README.md').read_text(encoding='utf-8')
 
 setup(
-    name='#IDP30| DyNaMo | Measuring lipid bilayers height with accuracy',
+    name='--- | --- | Automatic cell type classification for ciliated epithelium',
     version='1.0.0',
-    description='Python scripts for AFM image processing and analysis',
+    description='Python scripts for Confocal image processing and analysis',
     long_description=long_description,
     long_description_content_type='text/markdown',
     author='Thang Duong Quoc LE',
