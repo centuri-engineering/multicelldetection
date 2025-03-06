@@ -1,12 +1,12 @@
 import context
-from celldetection.imagedata.cellcountermakerfile import read_Cell_Counter_Maker_XML_file, visualize_cells, analyze_cell_distribution
-from celldetection.imagedata.classicdetection import save_cell_patches
+from multicelldetection.imagedata.cellcountermakerfile import read_Cell_Counter_Maker_XML_file, visualize_cells, analyze_cell_distribution
+from multicelldetection.imagedata.classicdetection import save_cell_patches
 import os
 from datetime import datetime
 import numpy as np 
 import matplotlib.pyplot as plt
 from skimage import io
-import tifffile
+
 
 
 if __name__ == "__main__":
@@ -30,18 +30,18 @@ if __name__ == "__main__":
     
     image_file_path = os.path.join(file_folder, '20x-UC-1-rgb.tif')
 
-    output_folder = 'outputs//test_1'
-    output_file_path = os.path.join(output_folder, f'20x-UC-1-rgb-annotation_window48.jpg')
-    # visualize_cells(image_file_path, cell_positions, calibration)
+    # output_folder = 'outputs//test_1'
+    # output_file_path = os.path.join(output_folder, f'20x-UC-1-rgb-annotation_window48.jpg')
+    visualize_cells(image_file_path, cell_positions, calibration)
 
     # visualize_cells(image_file_path, cell_positions, calibration, window_size=48, output_path=output_file_path)
 
     # visualize_cells(image_file_path, cell_positions, calibration, window_size=None, output_path=output_file_path)
 
-    train_image = tifffile.imread(image_file_path)
+    # train_image = tifffile.imread(image_file_path)
 
 
-    save_cell_patches(train_image, cell_positions, patch_size=46, base_dir=output_folder)
+    # save_cell_patches(train_image, cell_positions, patch_size=46, base_dir=output_folder)
 
 
 
