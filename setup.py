@@ -17,7 +17,7 @@ setup(
         'Development Status :: 1 - Production/Stable',
         'Intended Audience :: Science/Research',
     ],
-    keywords='atomic force microscopy, afm, image processing',
+    keywords='multi-cell detection, classification, image processing',
     python_requires='>=3.9,<=3.11',
     packages=find_packages(exclude=('outputs')),
     install_requires=['matplotlib==3.8.2',
