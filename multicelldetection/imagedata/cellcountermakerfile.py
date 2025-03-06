@@ -7,6 +7,12 @@ import pandas as pd
 import seaborn as sns
 from matplotlib.patches import Rectangle
 
+import os
+from skimage.io import imsave
+import numpy as np
+from datetime import datetime
+
+
 def read_Cell_Counter_Maker_XML_file(xml_file_path):
 	"""
 	Parse the CellCounter XML file to extract cell positions and types.
@@ -307,3 +313,71 @@ def analyze_cell_distribution(cell_positions, calibration):
 			})
 	
 	return pd.DataFrame(stats)
+
+
+def save_cell_patches(image, positions, patch_size=32, base_dir=None):
+	"""
+	Extract and save cell patches as individual images, organized by cell type.
+	
+	Args:
+		image: Original RGB image array
+		positions: Dictionary of cell positions by type
+		patch_size: Size of patches to extract (default: 32)
+		base_dir: Base directory to save patches (default: creates timestamp-based directory)
+	"""
+	# Create base directory if not specified
+	if base_dir is None:
+		timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+		base_dir = f"cell_patches_{timestamp}"
+	
+	if not os.path.exists(base_dir):
+		os.makedirs(base_dir)
+		
+	# Save original image parameters
+	params = {
+		'image_size': image.shape,
+		'patch_size': patch_size,
+		'num_patches': 0
+	}
+	
+	half_size = patch_size // 2
+	patches_info = []  # Store information about saved patches
+	
+	# Process each cell type
+	for cell_type, coords in positions.items():
+		# Create directory for this cell type
+		cell_type_dir = os.path.join(base_dir, cell_type)
+		if not os.path.exists(cell_type_dir):
+			os.makedirs(cell_type_dir)
+		
+		# Process each position for this cell type
+		for idx, (x, y) in enumerate(coords):
+			x, y = int(x), int(y)
+			
+			# Check if patch is within image bounds
+			if (x >= half_size and x < image.shape[1] - half_size and 
+				y >= half_size and y < image.shape[0] - half_size):
+				
+				# Extract patch
+				patch = image[y-half_size:y+half_size, x-half_size:x+half_size]
+				
+				# Generate filename
+				filename = f"{cell_type}_x{x}_y{y}_patch{idx+1}.png"
+				filepath = os.path.join(cell_type_dir, filename)
+				
+				# Save patch
+				imsave(filepath, patch)
+				
+				# Store patch information
+				patches_info.append({
+					'cell_type': cell_type,
+					'filename': filename,
+					'position': (x, y),
+					'patch_size': patch_size,
+					'filepath': filepath
+				})
+				
+				params['num_patches'] += 1
+
+	
+	return base_dir, patches_info
